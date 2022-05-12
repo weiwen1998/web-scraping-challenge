@@ -159,15 +159,14 @@ def scrape_info():
         # In[27]:
 
 
-        cerberus_url="https://marshemispheres.com/cerberus.html"
+        cerberus_url="https://marshemispheres.com/"
         browser.visit(cerberus_url)
 
 
         # In[28]:
 
 
-        cerberus_elem = browser.find_by_tag('a')[3]
-        cerberus_elem.click()
+        cerberus_elem = browser.find_by_css('a.product-item img')[0].click()
 
 
         # In[29]:
@@ -180,21 +179,20 @@ def scrape_info():
         # In[30]:
 
 
-        img_url_rel_a = img_soup.find("img", class_="wide-image").get('src')
-
+        img_url_rel_a = img_soup.find("a", text="Sample").get("href")
+        img_url_a = cerberus_url + img_url_rel_a
 
         # In[31]:
 
 
-        schiaparelli_url="https://marshemispheres.com/schiaparelli.html"
+        schiaparelli_url="https://marshemispheres.com/"
         browser.visit(schiaparelli_url)
 
 
         # In[32]:
 
 
-        schiaparelli_elem = browser.find_by_tag('a')[3]
-        schiaparelli_elem.click()
+        schiaparelli_elem = browser.find_by_css('a.product-item img')[1].click()
 
 
         # In[33]:
@@ -207,48 +205,48 @@ def scrape_info():
         # In[34]:
 
 
-        img_url_rel_b = img_soup.find("img", class_="wide-image").get('src')
+        img_url_rel_b = img_soup.find("a", text="Sample").get("href")
+        img_url_b = schiaparelli_url + img_url_rel_b
 
 
         # In[35]:
 
 
-        syrtis_major_url="https://marshemispheres.com/syrtis.html"
+        syrtis_major_url="https://marshemispheres.com/"
         browser.visit(syrtis_major_url)
 
 
         # In[36]:
 
 
-        syrtis_major_elem = browser.find_by_tag('a')[3]
-        syrtis_major_elem.click()
+        syrtis_major_elem = browser.find_by_css('a.product-item img')[2].click()
 
 
         # In[37]:
 
 
-        html=browser.html
+        hhtml=browser.html
         img_soup = bs(html, 'html.parser')
 
 
         # In[38]:
 
 
-        img_url_rel_c = img_soup.find("img", class_="wide-image").get('src')
+        img_url_rel_c = img_soup.find("a", text="Sample").get("href")
+        img_url_c = syrtis_major_url + img_url_rel_c    
 
 
         # In[39]:
 
 
-        valles_marineris_url="https://marshemispheres.com/valles.html"
+        valles_marineris_url="https://marshemispheres.com/"
         browser.visit(valles_marineris_url)
 
 
         # In[40]:
 
 
-        valles_marineris_elem = browser.find_by_tag('a')[3]
-        valles_marineris_elem.click()
+        valles_marineris_elem = browser.find_by_css('a.product-item img')[3].click()
 
 
         # In[41]:
@@ -261,17 +259,17 @@ def scrape_info():
         # In[42]:
 
 
-        img_url_rel_d = img_soup.find("img", class_="wide-image").get('src')
-
+        img_url_rel_d = img_soup.find("a", text="Sample").get("href")
+        img_url_d = valles_marineris_url + img_url_rel_d
 
         # In[45]:
 
 
         mars_dict = [
-        {"title": cerberus,"img_url": img_url_rel_a},
-        {"title": schiaparelli,"img_url": img_url_rel_b},
-        {"title": syrtis_major,"img_url": img_url_rel_c},
-        {"title": valles_marineris,"img_url": img_url_rel_d}
+        {"title": cerberus,"img_url": img_url_a},
+        {"title": schiaparelli,"img_url": img_url_b},
+        {"title": syrtis_major,"img_url": img_url_c},
+        {"title": valles_marineris,"img_url": img_url_d}
         ]
 
 
